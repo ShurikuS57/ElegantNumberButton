@@ -24,6 +24,7 @@
         android:layout_width="200dp"
         app:backGroundColor="@color/colorPrimary"
         app:textSize="8sp"
+        app:stepNumber="2"
         android:layout_marginTop="18dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/text_view"

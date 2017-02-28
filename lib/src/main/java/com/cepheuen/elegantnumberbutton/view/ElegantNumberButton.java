@@ -28,6 +28,7 @@ public class ElegantNumberButton extends RelativeLayout {
     private int lastNumber;
     private int currentNumber;
     private int finalNumber;
+    private int stepNumber;
     private TextView textView;
     private View view;
     private OnValueChangeListener mOnValueChangeListener;
@@ -65,6 +66,7 @@ public class ElegantNumberButton extends RelativeLayout {
 
         initialNumber = a.getInt(R.styleable.ElegantNumberButton_initialNumber,0);
         finalNumber = a.getInt(R.styleable.ElegantNumberButton_finalNumber,Integer.MAX_VALUE);
+        stepNumber = a.getInt(R.styleable.ElegantNumberButton_stepNumber,1);
         float textSize = a.getDimension(R.styleable.ElegantNumberButton_textSize,13);
         int color = a.getColor(R.styleable.ElegantNumberButton_backGroundColor,defaultColor);
         int textColor = a.getColor(R.styleable.ElegantNumberButton_textColor,defaultTextColor);
@@ -102,14 +104,14 @@ public class ElegantNumberButton extends RelativeLayout {
             @Override
             public void onClick(View mView) {
                 int num = Integer.valueOf(textView.getText().toString());
-                setNumber(String.valueOf(num-1), true);
+                setNumber(String.valueOf(num-stepNumber), true);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View mView) {
                 int num = Integer.valueOf(textView.getText().toString());
-                setNumber(String.valueOf(num+1), true);
+                setNumber(String.valueOf(num+stepNumber), true);
             }
         });
         a.recycle();
