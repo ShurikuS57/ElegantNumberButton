@@ -7,6 +7,7 @@
         <attr name="finalNumber" format="integer" />
         <attr name="textColor" format="color"/>
         <attr name="textSize" format="dimension"/>
+        <attr name="postfixText" format="string"/>
         <attr name="stepNumber" format="integer"/>
         <attr name="backgroundDrawable" format="reference"/>
     </declare-styleable>

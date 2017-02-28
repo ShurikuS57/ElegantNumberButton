@@ -29,6 +29,7 @@ public class ElegantNumberButton extends RelativeLayout {
     private int currentNumber;
     private int finalNumber;
     private int stepNumber;
+    private String postfixText;
     private TextView textView;
     private View view;
     private OnValueChangeListener mOnValueChangeListener;
@@ -67,6 +68,11 @@ public class ElegantNumberButton extends RelativeLayout {
         initialNumber = a.getInt(R.styleable.ElegantNumberButton_initialNumber,0);
         finalNumber = a.getInt(R.styleable.ElegantNumberButton_finalNumber,Integer.MAX_VALUE);
         stepNumber = a.getInt(R.styleable.ElegantNumberButton_stepNumber,1);
+        postfixText = a.getString(R.styleable.ElegantNumberButton_postfixText);
+        if(postfixText == null){
+            postfixText = "";
+        }
+
         float textSize = a.getDimension(R.styleable.ElegantNumberButton_textSize,13);
         int color = a.getColor(R.styleable.ElegantNumberButton_backGroundColor,defaultColor);
         int textColor = a.getColor(R.styleable.ElegantNumberButton_textColor,defaultTextColor);
@@ -95,7 +101,7 @@ public class ElegantNumberButton extends RelativeLayout {
         else
             mLayout.setBackgroundDrawable(drawable);
 
-        textView.setText(String.valueOf(initialNumber));
+        textView.setText(initialNumber + postfixText);
 
         currentNumber = initialNumber;
         lastNumber = initialNumber;
@@ -103,14 +109,14 @@ public class ElegantNumberButton extends RelativeLayout {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View mView) {
-                int num = Integer.valueOf(textView.getText().toString());
+                int num = Integer.valueOf(textView.getText().toString().replace(postfixText,""));
                 setNumber(String.valueOf(num-stepNumber), true);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View mView) {
-                int num = Integer.valueOf(textView.getText().toString());
+                int num = Integer.valueOf(textView.getText().toString().replace(postfixText,""));
                 setNumber(String.valueOf(num+stepNumber), true);
             }
         });
@@ -149,7 +155,7 @@ public class ElegantNumberButton extends RelativeLayout {
         {
             this.currentNumber = initialNumber;
         }
-        textView.setText(String.valueOf(currentNumber));
+        textView.setText(currentNumber + postfixText);
     }
     public void setNumber(String number, boolean notifyListener){
         setNumber(number);

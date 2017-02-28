@@ -25,6 +25,7 @@
         app:backGroundColor="@color/colorPrimary"
         app:textSize="8sp"
         app:stepNumber="2"
+        app:postfixText=" km"
         android:layout_marginTop="18dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/text_view"
